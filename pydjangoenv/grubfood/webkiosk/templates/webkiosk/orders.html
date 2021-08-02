@@ -1,0 +1,25 @@
+
+{% extends 'webkiosk/base.html' %}
+{% block pagetitle %} Grubfood - Orders
+{% endblock %}
+{% block maincontent%}
+
+<ol>
+<section class="container content-section">
+  <h2>Orders</h2>
+  <button class="btn btn-add" type="button"><a href="{% url 'webkiosk:order-create' %}">Add Order</a></button>
+</section>
+  {% for Orders in orderlist%}
+  <section class="container content-section">
+    <div class="shop-item">
+      <span class="shop-item-title"> <li>  {{Orders.orderdatetime}} | {{Orders.customer.lastname}}, {{Orders.customer.firstname}}
+      </li></span>
+      <button class="btn shop-item-button" type="button"><a href ="{% url 'webkiosk:order-details' Orders.id %}">More Info</a></button>
+      <button class="btn shop-item-button" type="button"><a href ="{% url 'webkiosk:order-update' Orders.id %}">Edit</a></button>
+      <button class="btn shop-item-button" type="button"><a href ="{% url 'webkiosk:order-delete' Orders.id %}">delete</a></button>
+    </div>
+  </section>
+
+  {% endfor %}
+</ol>
+{% endblock %}

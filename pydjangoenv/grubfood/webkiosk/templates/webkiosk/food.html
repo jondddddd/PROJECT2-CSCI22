@@ -1,0 +1,23 @@
+
+{% extends 'webkiosk/base.html' %}
+{% block pagetitle %} Grubfood - Food List
+{% endblock %}
+{% block maincontent%}
+
+<ol>
+<section class="container content-section">
+  <h2>Menu</h2>
+  <button class="btn btn-add" type="button"><a href="{% url 'webkiosk:food-create' %}">Add Food</a></button>
+</section>
+  {% for Food in foodlist%}
+  <section class="container content-section">
+    <div class="shop-item">
+        <span class="shop-item-title"> <li>{{Food.foodname}} | Php {{Food.foodprice}} |
+        <button class="btn shop-item-button" type="button"><a href ="{% url 'webkiosk:food-detail' Food.id %}">More Info</a></button>
+        <button class="btn shop-item-button" type="button"><a href ="{% url 'webkiosk:food-update' Food.id %}">Edit</a></button>
+        <button class="btn shop-item-button" type="button"><a href ="{% url 'webkiosk:food-delete' Food.id %}">delete</a></button>
+</section>
+
+  {% endfor %}
+</ol>
+{% endblock %}

@@ -1,0 +1,19 @@
+{% extends 'webkiosk/base.html' %}
+{% block pagetitle %} Grubfood - Add or Edit Food
+{% endblock %}
+{% block maincontent%}
+<section class="container content-section">
+  <h2>Add or Edit Food</h2>
+  <form method ="POST">
+    {% csrf_token %}
+    {{form.as_ul}}
+    <button class="btn btn-submit" input type='submit', value="submit"> Submit</button>
+    <ul>
+      {% for message in messsages%}
+      <li>{{ message}}</li>
+      {% endfor %}
+
+    </ul>
+  </form>
+</section>
+{% endblock %}

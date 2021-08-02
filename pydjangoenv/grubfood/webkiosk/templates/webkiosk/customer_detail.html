@@ -1,0 +1,16 @@
+{% extends 'webkiosk/base.html' %}
+{% block pagetitle %} Grubfood - {{food.foodname}}{{endblock}}
+{% endblock %}
+{% block maincontent%}
+
+
+<section class="container content-section">
+  <h2>{{ customer.lastname }}, {{ customer.firstname }}</h2>
+<ul>
+  <li>Address: {{ customer.address }}</li>
+  <li>City: {{ customer.city }}</li>
+
+</ul>
+</section>
+
+{% endblock %}

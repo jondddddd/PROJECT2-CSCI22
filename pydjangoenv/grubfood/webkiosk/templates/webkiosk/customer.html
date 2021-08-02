@@ -1,0 +1,23 @@
+
+{% extends 'webkiosk/base.html' %}
+{% block pagetitle %} Grubfood - Customers
+{% endblock %}
+{% block maincontent%}
+
+<ol>
+<section class="container content-section">
+  <h2>Customers</h2>
+    <button class="btn btn-add" type="button"><a href="{% url 'webkiosk:customer-create' %}">Add New Customer</a></button>
+</section>
+  {% for Customer in customerlist%}
+  <section class="container content-section">
+    <div class="shop-item">
+        <span class="shop-item-title"> <li>{{Customer.lastname}}, {{Customer.firstname}} </li></span>
+        <button class="btn shop-item-button" type="button"><a href ="{% url 'webkiosk:customer-details' Customer.id %}">More Info</a></button>
+        <button class="btn shop-item-button" type="button"><a href ="{% url 'webkiosk:customer-update' Customer.id %}">Edit</a></button>
+        <button class="btn shop-item-button" type="button"><a href ="{% url 'webkiosk:customer-delete' Customer.id %}">delete</a></button>
+      </section>
+
+  {% endfor %}
+</ol>
+{% endblock %}
