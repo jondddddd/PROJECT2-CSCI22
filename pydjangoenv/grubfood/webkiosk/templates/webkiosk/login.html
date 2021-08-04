@@ -9,16 +9,14 @@
 
 <div class="container content-section">
   <h2>Login</h2>
-      <form method="Post" action="">
-  {% csrf_token %}
+      <form method="POST" action="">
+        {% csrf_token %}
 
-
-
-        <label for="name"> Username</label>
-          <input ype="name" name="name" id="name" placeholder="Username" required>
-        <label for="password"> Password</label>
-          <input type="password" name="password" id="password" placeholder="password" required>
-        <button class="btn btn-submit" type="submit" name = "Create User"> Submit</button>
+          <label for="name"> Username</label>
+            <input type="text" name="username" id="username" placeholder="Username" required>
+          <label for="password"> Password</label>
+            <input type="password" name="password" id="password" placeholder="password" required>
+          <button class="btn btn-submit" type="submit" name = "Create User"> Submit</button>
       </form>
       {% for message in messages %}
         <p id="messages"> {{message}}</p>

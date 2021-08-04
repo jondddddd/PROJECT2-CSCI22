@@ -10,7 +10,7 @@ from django.contrib.auth import authenticate, login, logout
 # Create your views here.
 #define our view Function
 def index(request):
-    return render(request, 'webkiosk/welcome.html')
+    return redirect('webkiosk:listfood')
 def registerpage(request):
     form = CreateUserForm()
 
@@ -26,7 +26,7 @@ def registerpage(request):
 def loginpage(request):
     if request.method == "POST":
         username = request.POST.get('username')
-        password = request.POST.get('password1')
+        password = request.POST.get('password')
 
         user = authenticate(request, username=username, password=password)
         if user is not None:
