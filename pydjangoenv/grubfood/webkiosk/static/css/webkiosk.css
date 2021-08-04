@@ -167,6 +167,12 @@ table {
     "left image description description right"
     "left image edit delete right";
 }
+.hello{
+  font-size: 18px;
+  color: white;
+  margin-right: 20px;
+
+}
 .food-image{
   grid-area: image;
   height: 250px;

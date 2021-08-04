@@ -1,4 +1,11 @@
+<style media="screen">
+  #hello-msg{
+    font-size: 18px;
+    color: white;
+    margin-right: 20px;
 
+}
+</style>
 <!DOCTYPE html>
 {% load static %}
 <html lang="en" dir="ltr">
@@ -12,11 +19,14 @@
     <header>
       <nav>
         <li><a href="{% url 'webkiosk:index' %}">HOME</a></li>
-        <li><a href="signin.html">LOGIN</a></li>
+        <li><a href="{% url 'webkiosk:login-page' %}">LOGIN</a></li>
         <li><a href="{% url 'webkiosk:listcustomer' %}">CUSTOMERS</a></li>
         <li><a href="{% url 'webkiosk:listfood' %}">STORE</a></li>
         <li><a href="{% url 'webkiosk:listorders' %}">ORDERS</a></li>
+        <span class="hello-msg"> Hello, {{request.user}} </span>
+        <span> <a href ="{% url 'webkiosk:logout-page' %}"> Logout </a> </span>
       </nav>
+
       <h1 class="store-name store-name-large">Jondi&Andy</h1>
     </header>
     <main>

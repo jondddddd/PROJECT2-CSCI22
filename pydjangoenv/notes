@@ -1,0 +1,29 @@
+template inheritance
+>>> f4 =Food(foodname='Large Croissant', fooddescription='A smaller sized version of a Croissant. This is a buttery, flaky, viennoiserie pastry of Austrian origin, but mostly associated with France. Croissants are named for its historical crescent shape and, like other viennoiserie, are made of a layered yeast-leavened dough. The dough is layered with butter, rolled and folded several times in succession, then rolled into a thin sheet, in a technique called laminating. The process results in a layered, flaky texture, similar to a puff pastry.', foodprice=30)
+>>> f4.save()
+>>> f3 =Food(foodname='Croissant', fooddescription='A smaller sized version of a Croissant. This is a buttery, flaky, viennoiserie pastry of Austrian origin, but mostly associated with France. Croissants are named for its historical crescent shape and, like other viennoiserie, are made of a layered yeast-leavened dough. The dough is layered with butter, rolled and folded several times in succession, then rolled into a thin sheet, in a technique called laminating. The process results in a layered, flaky texture, similar to a puff pastry.', foodprice=20
+
+>>> f3
+<Food: None:Croissant,A smaller sized version of a Croissant. This is a buttery, flaky, viennoiserie pastry of Austrian origin, but mostly associated with France. Croissants are named for its historical crescent shape and, like other viennoiserie, are made of a layered yeast-leavened dough. The dough is layered with butter, rolled and folded several times in succession, then rolled into a thin sheet, in a technique called laminating. The process results in a layered, flaky texture, similar to a puff pastry.,20>
+>>> f3.save()
+c1= Customer.objects.get(id=1)
+c1.save()
+c2= Customer.objects.get(id=2)
+c3= Customer.objects.get(id=3)
+o1=Orders(paymentmode='CD', quantity=2, food=f1, customer=c1)
+from webkiosk.models import Customer, Food, Orders
+f1=Food.objects.get(id=1)
+f2=Food.objects.get(id=2)
+f2.save()
+f3=Food.objects.get(id=3)
+f4=Food.objects.get(id=4)
+o2=Orders(paymentmode='Ch', quantity=5, food=f4, customer=c3)
+o3=Orders(paymentmode='CD', quantity=5, food=f2, customer=c1)
+f1.order_set.all()
+Orders.objects.get(id=2)
+# shows all the orders of c1
+().models_set.all()
+c1.orders_set.all()
+c2.orders_set.all()
+orders_set.all()
+<QuerySet [<Orders: 1:Luis,MAslog,2021-08-02 08:48:21.401771+00:00,Mini Korean Cream Cheese Garlic Bread,CD,2>, <Orders: 2:Luis,MAslog,2021-08-02 08:49:00.708510+00:00,Mini Korean Cream Cheese Garlic Bread,CD,2>, <Orders: 3:Luis,MAslog,2021-08-02 08:58:50.212017+00:00,Mini Korean Cream Cheese Garlic Bread,CD,2>, <Orders: 5:Luis,MAslog,2021-08-02 09:25:06.202468+00:00,Korean Cream Cheese Garlic Bread,CD,5>]>

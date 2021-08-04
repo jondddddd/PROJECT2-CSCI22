@@ -9,6 +9,7 @@ class Customer(models.Model):
     address = models.CharField(max_length = 100)
     city = models.CharField(max_length = 20)
 
+
     def __str__(self):
         return f'{self.id}:{self.firstname},{self.lastname},{self.address},{self.city}'
 #we neeed to make a order model and a food model for the startproject

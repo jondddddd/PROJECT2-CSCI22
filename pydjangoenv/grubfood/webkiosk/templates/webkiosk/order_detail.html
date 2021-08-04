@@ -4,15 +4,25 @@
 {% block maincontent%}
 
 
-<section class="container content-section">
+<table class="container content-section">
   <h2>Order {{ order.id }}</h2>
 <ul>
-  <li>Name: {{ order.customer.lastname }},{{ order.customer.firstname }}</li>
-  <li>Date and Time: {{ order.orderdatetime }}</li>
-  <li>Payment mode: {{ order.paymentmode }}</li>
-  <li>Quantity: {{ order.quantity }}</li>
-  <li>Food: {{ order.food.foodname }}</li>
-  <li>Total Price: <p id="demo"></p></li>
+  <tr>
+    <th>Name</th>
+    <th>Date and Time</th>
+    <th>Payment mode</th>
+    <th>Quantity</th>
+    <th>Food</th>
+    <th>Total Price</th>
+  </tr>
+
+  <td>{{ order.customer.lastname }}, {{ order.customer.firstname }}</td>
+  <td>{{ order.orderdatetime }}</td>
+  <td>{{ order.paymentmode }}</td>
+  <td>{{ order.quantity }}</td>
+  <td>{{ order.food.foodname }}</td>
+  <td><p id="demo"></p></td>
+
 
   <script>
     let x = {{order.food.foodprice}};
@@ -21,6 +31,6 @@
   document.getElementById("demo").innerHTML = "Php " + z;
 </script>
 </ul>
-</section>
+</table>
 
 {% endblock %}

@@ -6,7 +6,14 @@
   <h2>Add or Edit Order</h2>
   <form method ="POST">
     {% csrf_token %}
-    {{form.as_ul}}
+    {{form.paymentmode.label}}
+    {{form.paymentmode}}
+    {{form.quantity.label}}
+    {{form.quantity}}
+    {{form.food.label}}
+    {{form.food}}
+    {{form.customer.label}}
+    {{form.customer}}
     <ul class="dropdown-menu">
       <button class="btn btn-submit" input type='submit', value="submit"> Submit</button>
     </ul>

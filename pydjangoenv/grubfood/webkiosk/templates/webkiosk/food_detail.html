@@ -4,12 +4,19 @@
 {% block maincontent%}
 
 
-<section class="container content-section">
+<table class="container content-section">
   <h2>{{ food.foodname }}</h2>
 <ul>
-  <li>Description: {{ food.fooddescription }}</li>
-  <li>Price: {{ food.foodprice }}</li>
+  <tr>
+    <th>Description</th>
+    <th>Price</th>
+
+  </tr>
+
+  <td>{{ food.fooddescription }}</td>
+  <td>{{ food.foodprice }}</td>
+
 </ul>
-</section>
+</table>
 
 {% endblock %}

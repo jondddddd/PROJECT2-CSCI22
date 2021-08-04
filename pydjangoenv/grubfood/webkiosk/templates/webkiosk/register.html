@@ -1,0 +1,31 @@
+{% extends 'webkiosk/base.html' %}
+{% block pagetitle %} Grubfood - Register
+{% endblock %}
+{% block maincontent%}
+
+
+
+
+<div class="container content-section">
+  <h2>Register</h2>
+      <form method="Post" action="">
+        {% csrf_token %}
+
+          <label for="name"> Username</label>
+            {{form.username}}
+          <label for="email"> Email</label>
+            {{form.email}}
+          <label for="age"> Password</label>
+            {{form.password1}}
+          <label for="password"> Confirm Password</label>
+            {{form.password2}}
+          <button class="btn btn-submit" type="submit"> Submit</button>
+        </form>
+        {{form.errors}}
+        
+
+	Don't have an account? <a href="{% url 'webkiosk:login-page' %}" class="ml-2">Login</a>
+
+</div>
+
+{% endblock %}

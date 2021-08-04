@@ -1,13 +1,46 @@
 from django.shortcuts import render, redirect
 from django.http import HttpResponse
+from django.contrib.auth.forms import UserCreationForm
 from .models import Customer, Food, Orders
-from .forms import Foodform, Ordersform, Customerform
+from .forms import Foodform, Ordersform, Customerform, CreateUserForm
 from django.contrib import messages
+from django.contrib.auth import authenticate, login, logout
+
 
 # Create your views here.
 #define our view Function
 def index(request):
     return render(request, 'webkiosk/welcome.html')
+def registerpage(request):
+    form = CreateUserForm()
+
+    if request.method =="POST":
+        form = CreateUserForm(request.POST)
+        if form.is_valid():
+            form.save()
+            user = form.cleaned_data.get('username')
+            messages.success(request,'Account was created for ' + user)
+            return redirect('webkiosk:login-page')
+    context ={'form': form}
+    return render(request,'webkiosk/register.html', context)
+def loginpage(request):
+    if request.method == "POST":
+        username = request.POST.get('username')
+        password = request.POST.get('password1')
+
+        user = authenticate(request, username=username, password=password)
+        if user is not None:
+
+            login(request, user)
+            return redirect('webkiosk:listfood')
+        else:
+            messages.info(request,'Username OR Password is incorrect')
+
+    context = {}
+    return render(request,'webkiosk/login.html', context)
+def logoutUser(request):
+    logout(request)
+    return redirect('webkiosk:login-page')
 def listfood(request):
     context={
         'foodlist': Food.objects.all(),
@@ -31,7 +64,7 @@ def createorders(request):
             messages.success(request, 'Order record successfully added')
             return redirect('webkiosk:listfood')
     context = {'form':form}
-    return render(request,'webkiosk/food_form.html', context)
+    return render(request,'webkiosk/orders_form.html', context)
 def detailorders(request, pk):
     order = Orders.objects.get(id=pk)
     context ={'order': order }
@@ -76,7 +109,8 @@ def createcustomer(request):
     return render(request,'webkiosk/customer_form.html', context)
 def detailcustomer(request, pk):
     customer = Customer.objects.get(id=pk)
-    context ={'customer':customer}
+    orders= customer.orders_set.all()
+    context ={'customer':customer, 'orders':orders}
     return render(request, 'webkiosk/customer_detail.html', context)
 def updatecustomer(request,pk):
     customer = Customer.objects.get(id=pk)
@@ -97,7 +131,7 @@ def deletecustomer(request,pk):
     elif request.method =='POST':
         food.delete()
         return redirect('webkiosk:listcustomer')
-        
+
 def createfood(request):
     if request.method =='GET':
         form = Foodform()

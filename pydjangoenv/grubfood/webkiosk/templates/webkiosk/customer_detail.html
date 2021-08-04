@@ -1,16 +1,42 @@
 {% extends 'webkiosk/base.html' %}
-{% block pagetitle %} Grubfood - {{food.foodname}}{{endblock}}
+{% block pagetitle %} Grubfood - {{customer.lastname}}, {{ customer.firstname }}{{endblock}}
 {% endblock %}
 {% block maincontent%}
 
 
-<section class="container content-section">
+<table class="container content-section">
   <h2>{{ customer.lastname }}, {{ customer.firstname }}</h2>
 <ul>
-  <li>Address: {{ customer.address }}</li>
-  <li>City: {{ customer.city }}</li>
+  <tr>
+    <th>Address</th>
+    <th>City</th>
+
+  </tr>
+
+  <td>{{ customer.address }}</td>
+  <td>{{ customer.city }}</td>
+  <tr>
+    <th>Order Number</th>
+    <th>Product Name</th>
+    <th>Quantity</th>
+    <th>Payment Mode</th>
+    <th>Total Price</th>
+  </tr>
+  {% for order in orders %}
+  <td>{{ order.id }}</td>
+  <td>{{ order.food.foodname }}</td>
+  <td>{{ order.quantity }}</td>
+  <td>{{ order.paymentmode }}</td>
+  <td><p id="demo"></p></td>
+  <script>
+    let x = {{order.food.foodprice}};
+    let y = {{order.quantity}};
+    let z = x * y;
+  document.getElementById("demo").innerHTML = "Php " + z;
+  </script>
+{% endfor %}
 
 </ul>
-</section>
+</table>
 
 {% endblock %}

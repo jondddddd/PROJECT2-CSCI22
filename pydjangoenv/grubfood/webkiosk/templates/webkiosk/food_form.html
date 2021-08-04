@@ -6,14 +6,21 @@
   <h2>Add or Edit Food</h2>
   <form method ="POST">
     {% csrf_token %}
-    {{form.as_ul}}
-    <button class="btn btn-submit" input type='submit', value="submit"> Submit</button>
+    {{form.foodname.label}}
+    {{form.foodname}}
+    {{form.fooddescription.label}}
+    {{form.fooddescription}}
+    {{form.foodprice.label}}
+    {{form.foodprice}}
+
+
     <ul>
       {% for message in messsages%}
       <li>{{ message}}</li>
       {% endfor %}
-
     </ul>
+    
   </form>
+<button class="btn btn-submit" input type='submit', value="submit"> Submit</button>
 </section>
 {% endblock %}

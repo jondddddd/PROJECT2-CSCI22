@@ -8,6 +8,10 @@ from django.contrib.staticfiles.urls import staticfiles_urlpatterns
 app_name = 'webkiosk'
 urlpatterns = [
     path('', views.index, name='index'),
+    path('register/', views.registerpage, name='register-page'),
+    path('login/', views.loginpage, name='login-page'),
+    path('logout/', views.logoutUser, name='logout-page'),
+
     path('food/', views.listfood, name='listfood'),
     path('food/new/', views.createfood, name='food-create'),
     path('food/<int:pk>/', views.detailfood, name='food-detail'),

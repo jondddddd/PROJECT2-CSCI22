@@ -6,7 +6,15 @@
   <h2>Add or Edit Customer Details</h2>
   <form method ="POST">
     {% csrf_token %}
-    {{form.as_ul}}
+    {{form.lastname.label}}
+    {{form.lastname}}
+    {{form.firstname.label}}
+    {{form.firstname}}
+    {{form.address.label}}
+    {{form.address}}
+    {{form.city.label}}
+    {{form.city}}
+
 
       <button class="btn btn-submit" input type='submit', value="submit"> Submit</button>
 
